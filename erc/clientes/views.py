@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import messages
+from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, UpdateView, CreateView
-from django.utils.decorators import method_decorator
 
 from usuarios.models import Usuario
 from clientes.models import Cliente
