@@ -43,6 +43,7 @@
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="{% url 'clientes:list' %}">Listar todos os cliente</a></li>
 						<li><a href="{% url 'clientes:create' %}">Cadastrar novo cliente</a></li>
+					</ul>
 				</div>
 				<div class="btn-group">
 					<button type="button" class="btn btn-primary">
@@ -51,8 +52,9 @@
 						<span class="caret"></span><span class="sr-only">Usuários</span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="">Listar todos os usuários</a></li>
-						<li><a href="#">Cadastrar novo usuário</a></li>
+						<li><a href="{% url 'usuarios:list' %}">Listar todos os usuários</a></li>
+						<li><a href="{% url 'usuarios:create' %}">Cadastrar novo usuário</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>
