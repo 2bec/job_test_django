@@ -1,0 +1,27 @@
+
+{% extends "base.html" %}
+
+{% load bootstrap %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-3">
+		{% include 'sidebar.html' %}
+	</div>
+	<div class="col-md-9">
+		<ol class="breadcrumb">
+			<li><a href="{% url 'usuarios:list' %}">Usuários</a></li>
+			{% for b in breadcrumbs %}
+				<li><a href="{% url b.url %}">{{ b }}</a></li>
+			{% endfor %}
+		</ol>
+
+		<h1>Cadastrar novo usário</h1>
+		<form action="" method="post">{% csrf_token %}
+			{{ form|bootstrap }}
+		    <input type="submit" class="btn btn-primary" value="Salvar novo usuário" />
+		</form>
+	</div>
+</div>
+{% endblock %}
