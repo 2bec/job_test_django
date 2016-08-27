@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^revendas/', include("revendas.urls", namespace='revendas')),
     url(r'^clientes/', include("clientes.urls", namespace='clientes')),
     url(r'^usuarios/', include("usuarios.urls", namespace='usuarios')),
-    # url(r'^faq/', auth_views.login, name="faq"),
+    url(r'^faq/', auth_views.login, name="faq"),
     url(r'^accounts/login/$', auth_views.login, {'template_name': 'login.html'}, name="login"),
     url(r'^accounts/logout/$', auth_views.logout, name="logout"),
 ]
