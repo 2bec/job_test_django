@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-3">
+		{% include 'sidebar.html' %}
+	</div>
+	<div class="col-md-9">
+		<ol class="breadcrumb">
+			<li><a href="{% url 'clientes:list' %}">Clientes</a></li>
+			{% for b in breadcrumbs %}
+				<li><a href="{% url b.url %}">{{ b }}</a></li>
+			{% endfor %}
+		</ol>
+		<h2>{{ produto }}</h2>
+		<p class="alert alert-warning"><strong>OK</strong></p>
+	</div>
+</div>
+{% endblock %}
