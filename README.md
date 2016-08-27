@@ -28,9 +28,7 @@ Para saber mais sobre o desenvolvimento acesse o arquivo [desenvolvimento], crie
 - Django-bootstrap-form
 
 ```
-pip install django
 pip install virtualenv
-pip install django-bootstrap-form
 
 ```
 
@@ -41,7 +39,10 @@ Primeiro crie um diretório para trabalhar ` mkdir test_django ` e acesse ` cd t
 Agora crie uma virtualenv ` virtualenv djangoenv ` depois ative sua nova virtualenv ` source djangoenv/bin/active `.
 
 # Git clone
-git clone git@github.com:2bec/job_test_django.git
+` git clone git@github.com:2bec/job_test_django.git `
+
+# Install requirements.txt
+` pip install -r requirements.txt `
 
 # Setup em 4 passos
 Acesse o diretório da aplicação ` cd job_test_django/erc `, inicie o banco ` python manage.py migrate `, crie um usuário adiministrativo ` python manage.py createsuperuser ` e inicie o servidor ` python manage.py runserver 8080 `.
