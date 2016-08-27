@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Bem vindo ao ERC{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="jumbotron">
+			<h1>Bem vindo ao ERC</h1>
+			<h3>E(mpresa) R(evenda) C(liente)</h3>
+			<p>Aplicação em <strong>Django</strong> para gerenciamento de revendas, clientes, usuários e para o controle de permissões de acesso aos produtos pelos clientes.</p>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<div class="caption">
+						<h3><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Empresa</h3>
+						<p>Pode cadastrar revendas, clientes, usuários e associair produtos as revendas e/ou clientes.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<div class="caption">
+						<h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Revendas</h3>
+						<p>Podem cadastrar clientes, usuários para seus clientes e associar os produtos disponíveis para cada cliente.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+					<div class="caption">
+						<h3><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Clientes</h3>
+						<p>Os clientes só podem acessar as telas dos produtos que possuem.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

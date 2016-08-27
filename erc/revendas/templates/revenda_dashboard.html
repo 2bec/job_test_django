@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-3">
+		{% include 'sidebar.html' %}
+	</div>
+	<div class="col-md-9">
+		<ol class="breadcrumb">
+			<li><a href="{% url 'revendas:dashboard' %}">{{ revenda }}</a></li>
+			<li class="active">Dashboard</li>
+		</ol>
+		<h2>Dashboard</h2>
+		<div class="row">
+			<div class="col-md-5">
+				<!-- TODO: replace it with google maps API -->
+				<img src="http://placehold.it/580x300" alt="" class="img-rounded img-responsive" />
+				<small>google maps &reg;</small>
+			</div>
+			<div class="col-md-7">
+				<h4>{{ revenda }}</h4>
+				<p>
+					<small><cite title="Endereço da revenda">Endereço da revenda, BR <i class="glyphicon glyphicon-map-marker">
+					</i></cite></small>
+				</p>
+				<p>
+					<i class="glyphicon glyphicon-envelope"></i> {% if revenda.email %}{{ revenda.email }}{% else %}(não cadastrado){% endif %}
+				</p>
+				<p>
+					<i class="glyphicon glyphicon-globe"></i> {% if revenda.url %} <a href="{{ revenda.url }}">{{ revenda.url }}</a>{% else %}(não cadastrado){% endif %}
+				</p>
+				<p>
+					<i class="glyphicon glyphicon-gift"></i> {% if revenda.email %}{{ revenda.email }}{% else %}(data não definida){% endif %}
+				</p>
+				<!-- Split button -->
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary">
+					Clientes  <span class="badge">{{ revenda.cliente_set.all.count }}</span></button>
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span><span class="sr-only">Clientes</span> 
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{% url 'clientes:list' %}">Listar todos os cliente</a></li>
+						<li><a href="{% url 'clientes:create' %}">Cadastrar novo cliente</a></li>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary">
+					Usuários <span class="badge">{{ revenda.usuario_set.all.count }}</span></button>
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span><span class="sr-only">Usuários</span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="">Listar todos os usuários</a></li>
+						<li><a href="#">Cadastrar novo usuário</a></li>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Produtos</h2>
+				<p>Lista dos produtos disponíveis para a revenda.</p>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<tr>
+							<th>Nome do produto</th>
+						</tr>
+						{% for p in revenda.produtos.all %}
+							<tr>
+								<td><a href="">{{ p }}</a></td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
