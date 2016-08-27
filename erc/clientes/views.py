@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
 
+from usuarios.models import Usuario
 from clientes.models import Cliente
 from clientes.forms import UpdateClienteForm
 
@@ -33,6 +34,12 @@ class UpdateClienteView(UpdateView):
 	template_name="cliente_update.html"
 	success_url = "/clientes/list"
 
+	def get_form_kwargs(self):
+		kwargs = super(UpdateClienteView, self).get_form_kwargs()
+		# used to filter produtos for each cliente or revenda on forms
+		kwargs.update({'user': self.request.user.usuario_set.all().first().id })
+		return kwargs
+
 	def form_valid(self, form):
 		messages.add_message(
 			self.request,
@@ -49,6 +56,12 @@ class CreateClienteView(CreateView):
 	form_class = UpdateClienteForm
 	template_name="cliente_create.html"
 	success_url = "/clientes/list"
+
+	def get_form_kwargs(self):
+		kwargs = super(CreateClienteView, self).get_form_kwargs()
+		# used to filter produtos for each cliente or revenda on forms
+		kwargs.update({'user': self.request.user.usuario_set.all().first().id })
+		return kwargs
 
 	def form_valid(self, form):
 		self.update_perfil(form) # put revenda on save form
