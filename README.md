@@ -42,9 +42,9 @@ Agora crie uma virtualenv ` virtualenv djangoenv ` depois ative sua nova virtual
 ` git clone git@github.com:2bec/job_test_django.git `
 
 # Install requirements.txt
-` pip install -r requirements.txt `
+Acesse o diretório do repositório ` cd job_test_django ` e então instale os requisitos pelo arquivo ` pip install -r requirements.txt `
 
 # Setup em 4 passos
-Acesse o diretório da aplicação ` cd job_test_django/erc `, inicie o banco ` python manage.py migrate `, crie um usuário adiministrativo ` python manage.py createsuperuser ` e inicie o servidor ` python manage.py runserver 8080 `.
+Acesse o diretório da aplicação ` cd job_test_django/erc `, inicie o banco (se for o primeiro acesso) ` python manage.py migrate `, crie um usuário adiministrativo ` python manage.py createsuperuser ` e inicie o servidor ` python manage.py runserver 8080 `.
 
-Agora você deve fazer login no admin http://127.0.0.1:8080/admin/, criar uma revenda e criar um usuário responsável por essa revenda. Opicionalmente você pode relacionar um cliente ao mesmo usuário.
+Agora você pode fazer login no admin http://127.0.0.1:8080/admin/, crie uma revenda e crie um usuário para essa revenda.Opicionalmente você pode relacionar um cliente para o mesmo usuário. Se tiver cliente, o usuário é um cliente senão ele é um usuário da revenda.
