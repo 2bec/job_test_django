@@ -69,7 +69,7 @@
 						</tr>
 						{% for p in revenda.produtos.all %}
 							<tr>
-								<td><a href="">{{ p }}</a></td>
+								<td><a href="{% url 'produtos:detail' p.id %}">{{ p }}</a></td>
 							</tr>
 						{% endfor %}
 					</table>

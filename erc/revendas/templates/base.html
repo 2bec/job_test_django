@@ -42,7 +42,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                Empresa X {% if revenda %}- {{ revenda }}{% endif %}
+                Empresa X {% if request.user.usuario_set.all.first.revenda %}- {{ request.user.usuario_set.all.first.revenda }}{% endif %}
             </a>
         </div>
         <!-- navbar-colapse -->

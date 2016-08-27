@@ -2,7 +2,7 @@
 <!-- Sidebar -->
 <ul class="nav nav-pills nav-stacked">
 	<li role="presentation" {% if url_name == 'revendas' %}class="active" {% endif %}><a href="{% url 'revendas:dashboard' %}">Revenda </a> </li>
-	<li role="presentation" {% if url_name == 'clientes' %}class="active" {% endif %}><a href="{% url 'clientes:list' %}">Clientes <span class="badge">{{  clientes.count }}</span></a></li>
+	<li role="presentation" {% if url_name == 'clientes' %}class="active" {% endif %}><a href="{% url 'clientes:list' %}">Clientes <span class="badge">{{ clientes.count }}</span></a></li>
 	<li role="presentation" {% if url_name == 'usuarios' %}class="active" {% endif %}><a href="{% url 'usuarios:list' %}">Usuários <span class="badge">{{ usuarios.count }}</span></a></li>
 </ul>
 <!-- end sidebar -->
