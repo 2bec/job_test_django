@@ -6,12 +6,14 @@ from django.contrib.auth.models import User
 from django.db import models
 
 from revendas.models import Revenda
+from clientes.models import Cliente
 
 # Create your models here.
 
 class Usuario(models.Model):
     user = models.ForeignKey(User)
     revenda = models.ForeignKey(Revenda)
+    cliente = models.ForeignKey(Cliente, blank=True, null=True)
     nome_completo = models.CharField(max_length=200, help_text='Nome completo', blank=True)
 
     class Meta:
