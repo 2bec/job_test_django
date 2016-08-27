@@ -21,7 +21,7 @@
 			<div class="col-md-7">
 				<h4>{{ revenda }}</h4>
 				<p>
-					<small><cite title="Endereço da revenda">Endereço da revenda, BR <i class="glyphicon glyphicon-map-marker">
+					<small><cite title="Endereço da revenda">{% if revenda.endereco %}{{ revenda.endereco }}{% else %}Endereço da revenda, BR{% endif %} <i class="glyphicon glyphicon-map-marker">
 					</i></cite></small>
 				</p>
 				<p>
@@ -41,8 +41,12 @@
 						<span class="caret"></span><span class="sr-only">Clientes</span> 
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="{% url 'clientes:list' %}">Listar todos os cliente</a></li>
-						<li><a href="{% url 'clientes:create' %}">Cadastrar novo cliente</a></li>
+						{% if not cliente %}
+							<li><a href="{% url 'clientes:list' %}">Listar todos os cliente</a></li>
+							<li><a href="{% url 'clientes:create' %}">Cadastrar novo cliente</a></li>
+						{% else %}
+							<li><a href="{% url 'logout' %}">Você é um cliente. Sai e entre como revenda.</a></li>
+						{% endif %}
 					</ul>
 				</div>
 				<div class="btn-group">
@@ -52,8 +56,12 @@
 						<span class="caret"></span><span class="sr-only">Usuários</span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="{% url 'usuarios:list' %}">Listar todos os usuários</a></li>
-						<li><a href="{% url 'usuarios:create' %}">Cadastrar novo usuário</a></li>
+						{% if not cliente %}
+							<li><a href="{% url 'usuarios:list' %}">Listar todos os usuários</a></li>
+							<li><a href="{% url 'usuarios:create' %}">Cadastrar novo usuário</a></li>
+						{% else %}
+							<li><a href="{% url 'logout' %}">Você é um cliente. Sai e entre como revenda.</a></li>
+						{% endif %}
 					</ul>
 				</div>
 			</div>
@@ -67,11 +75,19 @@
 						<tr>
 							<th>Nome do produto</th>
 						</tr>
-						{% for p in revenda.produtos.all %}
-							<tr>
-								<td><a href="{% url 'produtos:detail' p.id %}">{{ p }}</a></td>
-							</tr>
-						{% endfor %}
+						{% if cliente %}
+							{% for p in cliente.produtos.all %}
+								<tr>
+									<td><a href="{% url 'produtos:detail' p.id %}">{{ p }}</a></td>
+								</tr>
+							{% endfor %}
+						{% else %}
+							{% for p in revenda.produtos.all %}
+								<tr>
+									<td><a href="{% url 'produtos:detail' p.id %}">{{ p }}</a></td>
+								</tr>
+							{% endfor %}
+						{% endif %}
 					</table>
 				</div>
 			</div>
