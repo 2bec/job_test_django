@@ -22,7 +22,10 @@ class ListaUsuariosView(ListView):
 		"""Returns Usarios that belong to the current cliente"""
 		usuario = get_object_or_404(Usuario, user=self.request.user) # get usuario
 		cliente = usuario.cliente # get specified cliente to usuario
-		return Usuario.objects.filter(cliente=cliente)
+		revenda = usuario.revenda # get revenda
+		if cliente:
+			return Usuario.objects.filter(cliente=cliente, revenda=revenda).order_by('-user')
+		return Usuario.objects.filter(revenda=revenda).order_by('-user')
 
 
 @method_decorator(login_required, name='dispatch')
