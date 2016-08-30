@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
+from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, UpdateView, CreateView
+from django.contrib.auth.models import User
 
-from usuarios.forms import UpdateUsuarioForm
+from usuarios.forms import UpdateUsuarioForm, CreateUsuarioForm
 from usuarios.models import Usuario
 
 # Create your views here.
@@ -44,24 +46,14 @@ class UpdateUsuarioView(UpdateView):
 		)
 		return super(UpdateUsuarioView, self).form_valid(form)
 
-	# TEST THIS!
-	# def get_object(self, *args, **kwargs):
-	# 	usuario = super(UpdateUsuarioView, self).get_object(*args, **kwargs)
-	# 	cliente = usuario.cliente
-	# 	r = self.request.user.usuario_set.all()
-	# VERY CONFUSE :(
-	# 	if not r or r.first().cliente != cliente:
-	# 		raise PermissionDenied() #or Http404
-	# 	return usuario
-
 
 @method_decorator(login_required, name='dispatch')
 class CreateUsuarioView(CreateView):
 
-	model = Usuario
-	form_class = UpdateUsuarioForm
+	model = User
+	form_class = CreateUsuarioForm
 	template_name="usuario_create.html"
-	success_url = "/usuarios/list"
+	success_url = "/usuarios/update"
 
 	def form_valid(self, form):
 		self.update_perfil(form) # save and set new user infos with the owner infos
@@ -78,3 +70,6 @@ class CreateUsuarioView(CreateView):
 		revenda = owner.revenda
 		cliente = owner.cliente
 		return Usuario.objects.create(user=user,revenda=revenda,cliente=cliente)
+
+	def get_success_url(self):
+		return reverse('usuarios:update',args=(self.object.usuario_set.all().first().id,))
