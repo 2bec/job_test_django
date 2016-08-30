@@ -1,5 +1,5 @@
 #Desenvolvimento
-Iniciei o desenvolvimento direto codificando, depois de ler o cenário, foi primeiro nos models depois urls, views, forms e templates.
+Iniciei o desenvolvimento direto codificando, depois de ler o cenário, fui primeiro desenvolvendo os models depois urls, views, forms e templates.
 
 Meu primeiro modelo foi esse, para revenda:
 
@@ -127,3 +127,5 @@ Para os formulários retornarem somente os produtos disponíveis para cada reven
 Para as views dos Usuários foi necessário sobrescrever o método save para que gravasse as permissões “certas” para aquele novo usuário. Depois através do [method_decorator](https://docs.djangoproject.com/pt-br/1.10/topics/class-based-views/intro/#decorating-the-class) com [permission_required](https://docs.djangoproject.com/pt-br/1.10/topics/auth/default/#the-permission-required-decorator) controlamos as permissões para cada view da aplicação. Por exemplo, na view create um cliente ou usuário só pode ter acesso caso seu usuário tenha essa permissão.
 
 Os templates foram simples, acho que não cheguei na melhor solução mas funciona. Criei um tema base com bootstrap e parti daí para o restante deles.
+
+Para os testes resolvi partir para os testes unitarios, foi uma ótima oportunidade para aprender mais sobre os testes, coisa que não tenho muito domínio. Estou lendo muita coisa sobre [unittest](https://docs.python.org/3/library/unittest.html#module-unittest), [TestCase](https://docs.djangoproject.com/pt-br/1.10/topics/testing/tools/#django.test.TestCase) e [selemiun](http://www.seleniumhq.org/). Também me interessei por [TDD](http://chimera.labs.oreilly.com/books/1234000000754/pt01.html) e outras metodologias que estou estudando novamente na faculdade também.  

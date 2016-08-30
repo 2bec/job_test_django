@@ -19,7 +19,7 @@ Esta aplicação foi desenvolvida para gerenciar a criação das revendas, clien
 - O cliente só pode acessar as telas de produtos que possui.
 
 # Desenvolvimento
-Para saber mais sobre o desenvolvimento acesse o arquivo [desenvolvimento], criei para documentar a experiência e gravar refências.
+Para saber mais sobre o desenvolvimento acesse o [arquivo de desenvolvimento](https://github.com/2bec/job_test_django/blob/master/Desenvolvimento.md), criei para documentar a experiência e gravar refências.
 
 # Requirements
 - Django 1.10+
@@ -29,7 +29,6 @@ Para saber mais sobre o desenvolvimento acesse o arquivo [desenvolvimento], crie
 
 ```
 pip install virtualenv
-
 ```
 
 # Enviroment
